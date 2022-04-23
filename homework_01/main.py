@@ -40,12 +40,12 @@ def filter_numbers(numbers, types):
     <<< filter_numbers([2, 3, 4, 5], EVEN)
     <<< [2, 4]
     """
-    if types is EVEN:
+    if types == EVEN:
         return list(filter(lambda x: x % 2 == 0, numbers))
-    elif types is ODD:
+    elif types == ODD:
         return list(filter(lambda x: x % 2 == 1, numbers))
-    elif types is PRIME:
-        return list(filter(lambda x: x != 0, map(is_prime, numbers)))
+    elif types == PRIME:
+        return list(filter(is_prime, numbers))
 
 
 
