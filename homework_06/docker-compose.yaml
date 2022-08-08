@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  blog:
+    build:
+      context: .
+      dockerfile: ./docker-build/blog/Dockerfile
+    environment:
+      CONFIG: ProductionConfig
+      SQLALCHEMY_DATABASE_URI: postgresql+psycopg2://user:1234@pg:5432/blog
+    ports:
+      - "8000:80"
+    depends_on:
+      pg:
+        condition: service_healthy
+
+  pg:
+    image: postgres
+    environment:
+      POSTGRES_DB: blog
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: 1234
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "user", "-d", "blog"]
+      interval: 5s
+      timeout: 5s
+      retries: 5

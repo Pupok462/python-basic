@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>
+            {% block title %}
+                Base Title
+            {% endblock %}
+        </title>
+        <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+        <style>
+            body{
+                background: #ffffff;
+            }
+            nav {
+                background: #6610f2;
+            }
+        </style>
+        {% block head %}
+        {%  endblock %}
+    </head>
+    <body>
+    <nav class="navbar">
+  <div class="container-fluid">
+    <a class="navbar-brand text-light" href="{{ url_for('list') }}">
+      List's
+    </a>
+  </div>
+</nav>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ 'primary' if category == 'message' else category }}"
+                         role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+<script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    {% block body %}
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    List Page
+{%  endblock %}
+
+{%  block body %}
+
+    <h1>Users</h1>
+
+  {% if users %}
+    <ul class="list-group">
+
+      {% for user in users %}
+        <li class="list-group-item">
+          <a class="text-decoration-none" href="#">
+            {{ user }}
+          </a>
+        </li>
+
+      {% endfor %}
+    </ul>
+
+  {% else %}
+
+    <div><strong>No users</strong></div>
+
+  {% endif %}
+
+  <br>
+     <a class="btn btn-primary m-lg-3" href="{{url_for('add')}}" role="button">Create User</a>
+
+{% endblock %}
+
+

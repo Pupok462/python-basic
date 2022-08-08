@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <h1>Add User</h1>
+    <form method="post">
+
+
+        {{ form.name.label(class='form-label') }}
+        {{ form.name(class='form-control', placeholder='Sam') }}
+
+
+        {{ form.username.label(class='form-label') }}
+        {{ form.username(class='form-control', placeholder='Samuel') }}
+
+
+        {{ form.email.label(class='form-label') }}
+        {{ form.email(class='form-control', placeholder='example@example.com') }}
+
+        {% if form.form_errors %}
+            <div class="errors my-2">
+            {% for error in form.form_errors %}
+                <div class="alert alert-danger">
+                    <p class="text-center">{{ error }}</p>
+                </div>
+
+            {% endfor %}
+            </div>
+        {% endif %}
+        <button type="submit" class="btn btn-primary my-2">Create</button>
+    </form>
+{% endblock %}
