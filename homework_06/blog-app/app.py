@@ -39,7 +39,7 @@ def add_users():
     try:
         db.session.commit()
     except IntegrityError:
-        error_text = f"Could not save product {name!r}, name is not unique!"
+        error_text = f"Could not save product {name!r}, he's not unique!"
         form.form_errors.append(error_text)
         return render_template("add.html", form=form), 400
 

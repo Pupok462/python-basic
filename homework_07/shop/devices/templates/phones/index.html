@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}
+    Phone Page
+{% endblock %}
+{% block body %}
+    <h1> This is Phone page</h1>
+    <ul>
+    {%  for phone in phones %}
+        <li> {{ phone }}</li>
+    {% endfor %}
+    </ul>
+
+{% endblock %}
