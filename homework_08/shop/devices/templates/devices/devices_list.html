@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {% with devices|first as first_device %}
+            {{ first_device.type }}
+        {% endwith %}
+    Page
+{% endblock %}
+
+{% block body %}
+    <h1> This is
+        {% with devices|first as first_device %}
+            {{ first_device.type }}
+        {% endwith %}
+        page</h1>
+    <ul>
+    {%  for device in devices %}
+        <li><a href="{% url 'devices:details' pk=device.id %}">{{ device }} ({{ device.type }})</a></li>
+    {% endfor %}
+    </ul>
+
+{% endblock %}
