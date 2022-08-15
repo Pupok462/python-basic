@@ -21,7 +21,7 @@ from jsonplaceholder_requests import fetch_json, USERS_DATA_URL, POSTS_DATA_URL
 async def create_tables():
     async with engine.begin() as connection:
         await connection.run_sync(Base.metadata.drop_all)
-        # await connection.run_sync(Base.metadata.create_all)
+        await connection.run_sync(Base.metadata.create_all)
 
 
 async def insert_users_posts_in_db(session: AsyncSession):

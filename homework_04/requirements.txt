@@ -9,3 +9,4 @@ idna==3.3
 multidict==6.0.2
 SQLAlchemy==1.4.39
 yarl==1.8.1
+asyncpg==0.26.0
