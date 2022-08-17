@@ -18,5 +18,10 @@
         <li><a href="{% url 'devices:details' pk=device.id %}">{{ device }} ({{ device.type }})</a></li>
     {% endfor %}
     </ul>
+    {% if user.is_authenticated %}
+            <a class="btn btn-success" href="{% url 'devices:create'%}" role="button">Create device</a>
+    {% endif %}
+
+
 
 {% endblock %}

@@ -3,11 +3,22 @@
     Device Page
 {% endblock %}
 {% block body %}
-    <h1> This is Device page</h1>
-    <ul>
-    {%  for device in devices %}
-        <li><a href="{% url 'devices:details' pk=device.id %}">{{ device }} ({{ device.type }})</a> </li>
-    {% endfor %}
-    </ul>
+    <div class="text-center">
+        <h1> This is Device page</h1>
+        {% if user.is_authenticated %}
+            <h2>Hello {{ user.username }}</h2>
+        {% endif %}
+        <ul>
+        {%  for device in devices %}
+            <a href="{% url 'devices:details' pk=device.id %}">{{ device }} ({{ device.type }})</a>
+            <br>
+        {% endfor %}
+        </ul>
+        {% if user.is_authenticated %}
+            <a class="btn btn-success" href="{% url 'devices:create'%}" role="button">Create device</a>
+        {% endif %}
+    </div>
+
+
 
 {% endblock %}

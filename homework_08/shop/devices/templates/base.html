@@ -25,7 +25,7 @@
     </head>
     <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="{% url 'devices:devices-list' %}">Navigation</a>
+        <a class="navbar-brand m-lg-2" href="{% url 'devices:devices-list' %}">Navigation</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -42,6 +42,23 @@
                 </li>
             </ul>
         </div>
+        {% if user.is_authenticated %}
+            <ul class="navbar-nav p-lg-2">
+            <li  class="nav-item ">
+                <a class="nav-link mr-sm-2" href="{% url 'authentication:profile' pk=user.id %}">Hello {{ user.username }} !</a>
+            <li  class="nav-item ">
+                <a class="nav-link mr-sm-2" href="{% url 'authentication:logout'%}"> Logout </a>
+            </ul>
+        {% else %}
+            <ul class="navbar-nav p-lg-2">
+                <li  class="nav-item ">
+                    <a class="nav-link mr-sm-2" href="{% url 'authentication:login'%}">Login</a>
+                </li>
+                <li  class="nav-item">
+                    <a class="nav-link mr-sm-0" href="{% url 'authentication:register'%}">Register</a>
+                </li>
+            </ul>
+        {% endif %}
     </nav>
     {% block body %}
     {% endblock %}

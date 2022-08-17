@@ -47,10 +47,11 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    # my pack
-    "devices.apps.DevicesConfig",
     # side packages
     "debug_toolbar",
+    # my pack
+    "devices.apps.DevicesConfig",
+    "authentication.apps.AuthenticationConfig"
 ]
 
 MIDDLEWARE = [
@@ -137,7 +138,7 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Show debug toolbar
-mimetypes.add_type("application/javascript", ".js", True)
+# mimetypes.add_type("application/javascript", ".js", True)
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'devices/media')
 MEDIA_URL = 'media/'
