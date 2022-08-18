@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Device Page
+{% endblock %}
+
+{% block body %}
+    <h1> This is Details page</h1>
+    <h3>Company : {{ device.company }}</h3>
+    <h3>Model: {{ device.model }}</h3>
+    <h3>Type : {{ device.type }}</h3>
+    <h3>Price: {{ device.price }} $</h3>
+    <h3>Photo: </h3>
+
+    {% if device.image.url is not null  %}
+        <img src="{{ device.image.url }}" alt="">
+    {% else %}
+        <br>
+        <h3> No Photo</h3>
+    {% endif %}
+    {% if user.is_authenticated %}
+
+            <a class="btn btn-danger" href="{% url 'devices:delete' device.pk %}" role="button">Delete device</a>
+    {% endif %}
+
+{% endblock %}
