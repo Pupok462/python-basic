@@ -1,5 +1,5 @@
 from django.db import models
-
+from authentication.models import UserModel
 
 class DevicesType(models.Model):
     class Meta:
@@ -28,6 +28,10 @@ class Devices(models.Model):
         return f"<Device #{self.pk} {self.company!r}>"
 
 
+class Slider(models.Model):
+    image = models.ImageField(upload_to='images/slider')
+    title = models.CharField(max_length=150)
+    sub_title = models.CharField(max_length=100)
 
-
-
+    def __str__(self):
+        return self.title

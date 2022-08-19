@@ -1,9 +1,16 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from .forms import DeviceCreateForm
-from .models import Devices, DevicesType
+from .models import Devices, DevicesType, Slider
 from django.views.generic import ListView, DetailView, DeleteView, CreateView
 from django.urls import reverse_lazy, reverse
+
+
+class SliderListView(ListView):
+    queryset = Slider.objects.all()
+    context_object_name = 'slider'
+    template_name = 'devices/preview.html'
 
 
 class DevicesListView(ListView):

@@ -53,7 +53,7 @@ class User(Base):
     name = Column(String, default=None, unique=False)
     username = Column(String, default=None, unique=True)
     email = Column(String, default=None, unique=True)
-    post = relationship('Post', back_populates='user')
+    posts = relationship('Post', back_populates='user')
 
 
 class Post(Base):

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Devices, DevicesType
+from .models import Devices, DevicesType, Slider
 
 
 @admin.register(Devices)
@@ -9,6 +9,8 @@ class DeviceAdmin(admin.ModelAdmin):
 
 
 admin.site.register(DevicesType)
+admin.site.register(Slider)
+
 
 
 
