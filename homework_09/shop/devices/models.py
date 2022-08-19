@@ -1,6 +1,7 @@
 from django.db import models
 from authentication.models import UserModel
 
+
 class DevicesType(models.Model):
     class Meta:
         verbose_name_plural = "Devices Type"

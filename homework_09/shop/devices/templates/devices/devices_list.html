@@ -9,7 +9,7 @@
 
 {% block body %}
     {% if user.is_superuser %}
-        <div style="width: 100%; height: 50px">
+        <div class="text-center" style="width: 100%; height: 50px">
                 <a href="{% url 'devices:create' %}" class="btn btn-primary"
                         style="border-radius: 18px; height: 40px; width: 280px;">Add Device To list</a>
         </div>
